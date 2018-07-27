@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    >
+    <data>
+        <import type="java.util.List"></import>
+        <variable
+            name="user"
+            type="com.liuchuanzheng.databindingdemo.UserBean" />
+        <!--我可以是任意类型-->
+        <variable
+            name="any"
+            type="String" />
+        <!--这里需要转义字符-->
+        <variable
+            name="myList"
+            type="List&lt;String&gt;" />
+        <variable
+            name="myClick"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="myClass"
+            type="com.liuchuanzheng.databindingdemo.MainActivity.MyClass"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}" />
+        <!--注意：这里age是int类型，必须转化为String，否则会运行时异常-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{any}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{myClick}"
+            android:text="@{myList[0]}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{myClass::onClickFriend}"
+            android:text="测试方法调用" />
+    </LinearLayout>
+</layout>
+
+
